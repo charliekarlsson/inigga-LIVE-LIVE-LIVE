@@ -445,3 +445,209 @@ revealMainContent = function() {
     originalRevealMainContent();
     setTimeout(initAllEffects, 1000);
 };
+
+// Single Page Navigation System
+let currentPage = 'home';
+let isPageTransitioning = false;
+
+// Page switching functionality
+function showPage(pageId) {
+    if (isPageTransitioning || pageId === currentPage) return;
+    
+    isPageTransitioning = true;
+    
+    // Hide current page
+    const currentPageElement = getCurrentPageElement();
+    if (currentPageElement) {
+        currentPageElement.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+        currentPageElement.style.opacity = '0';
+        currentPageElement.style.transform = 'translateY(-20px)';
+    }
+    
+    // Update URL hash without triggering scroll
+    history.pushState(null, null, pageId === 'home' ? '#' : `#${pageId}`);
+    
+    setTimeout(() => {
+        // Hide all page sections
+        hideAllPages();
+        
+        // Show target page
+        const targetPage = getPageElement(pageId);
+        if (targetPage) {
+            targetPage.classList.remove('hidden');
+            targetPage.style.opacity = '0';
+            targetPage.style.transform = 'translateY(20px)';
+            targetPage.style.transition = 'opacity 0.4s ease-in, transform 0.4s ease-in';
+            
+            // Force reflow
+            targetPage.offsetHeight;
+            
+            setTimeout(() => {
+                targetPage.style.opacity = '1';
+                targetPage.style.transform = 'translateY(0)';
+                currentPage = pageId;
+                isPageTransitioning = false;
+                
+                // Scroll to top of new page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Reinitialize animations for the new page
+                initScrollAnimations();
+            }, 50);
+        } else {
+            isPageTransitioning = false;
+        }
+    }, 300);
+}
+
+// Helper function to get current page element
+function getCurrentPageElement() {
+    switch(currentPage) {
+        case 'home': return document.getElementById('main-content');
+        case 'products': return document.getElementById('products-page');
+        case 'airmax-pro': return document.getElementById('airmax-pro-page');
+        case 'airmax-lite': return document.getElementById('airmax-lite-page');
+        case 'niggbook-air': return document.getElementById('niggbook-air-page');
+        case 'niggbook-pro': return document.getElementById('niggbook-pro-page');
+        default: return null;
+    }
+}
+
+// Helper function to get page element by ID
+function getPageElement(pageId) {
+    switch(pageId) {
+        case 'home': return document.getElementById('main-content');
+        case 'products': return document.getElementById('products-page');
+        case 'airmax-pro': return document.getElementById('airmax-pro-page');
+        case 'airmax-lite': return document.getElementById('airmax-lite-page');
+        case 'niggbook-air': return document.getElementById('niggbook-air-page');
+        case 'niggbook-pro': return document.getElementById('niggbook-pro-page');
+        default: return null;
+    }
+}
+
+// Hide all page sections
+function hideAllPages() {
+    const pages = [
+        'main-content',
+        'products-page', 
+        'airmax-pro-page',
+        'airmax-lite-page',
+        'niggbook-air-page',
+        'niggbook-pro-page'
+    ];
+    
+    pages.forEach(pageId => {
+        const page = document.getElementById(pageId);
+        if (page) {
+            page.classList.add('hidden');
+        }
+    });
+}
+
+// Scroll to section within current page (for home page navigation)
+function scrollToSection(sectionId) {
+    // If not on home page, go to home first
+    if (currentPage !== 'home') {
+        showPage('home');
+        setTimeout(() => {
+            scrollToSection(sectionId);
+        }, 500);
+        return;
+    }
+    
+    const section = document.getElementById(sectionId);
+    if (section) {
+        const offsetTop = section.offsetTop - 80; // Account for navbar
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function(event) {
+    const hash = window.location.hash.substring(1);
+    const pageId = hash || 'home';
+    
+    // Only change page if different from current
+    if (pageId !== currentPage) {
+        currentPage = pageId; // Set directly to avoid pushState
+        const wasTransitioning = isPageTransitioning;
+        isPageTransitioning = false; // Reset flag
+        showPage(pageId);
+        isPageTransitioning = wasTransitioning;
+    }
+});
+
+// Initialize page routing on load
+function initPageRouting() {
+    // Check initial URL hash
+    const hash = window.location.hash.substring(1);
+    if (hash && hash !== 'home' && hash !== '') {
+        // If we have a hash and main content is visible, show that page
+        if (!document.getElementById('main-content').classList.contains('hidden')) {
+            currentPage = hash;
+            hideAllPages();
+            const targetPage = getPageElement(hash);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            } else {
+                // Invalid hash, show home
+                document.getElementById('main-content').classList.remove('hidden');
+                currentPage = 'home';
+                window.location.hash = '';
+            }
+        }
+    }
+}
+
+// Call init when DOM loads and when main content is revealed
+document.addEventListener('DOMContentLoaded', function() {
+    // Only init routing if start screen is not visible
+    if (startScreen && startScreen.classList.contains('hidden')) {
+        initPageRouting();
+    }
+});
+
+// Update the original revealMainContent to include routing
+const originalRevealMainContentWithRouting = revealMainContent;
+revealMainContent = function() {
+    originalRevealMainContentWithRouting();
+    setTimeout(() => {
+        initAllEffects();
+        initPageRouting(); // Initialize routing after main content is shown
+    }, 1000);
+};
+
+// Add CSS for page transitions
+const pageTransitionCSS = `
+    .page-section {
+        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    }
+    
+    .page-section.hidden {
+        display: none !important;
+    }
+    
+    /* Ensure footer only shows on home page */
+    .footer {
+        display: none;
+    }
+    
+    .page-section[data-page="home"] ~ .footer {
+        display: block;
+    }
+    
+    /* Make sure page sections take full viewport */
+    .page-section {
+        min-height: 100vh;
+        width: 100%;
+    }
+`;
+
+// Inject CSS
+const style = document.createElement('style');
+style.textContent = pageTransitionCSS;
+document.head.appendChild(style);
