@@ -30,12 +30,12 @@
                     <li><a href="#overview">Overview</a></li>
                     <li><a href="#features">Features</a></li>
                     <li class="dropdown">
-                        <a href="#products" class="dropdown-toggle">Products</a>
+                        <a href="javascript:void(0)" onclick="showPage('products')" class="dropdown-toggle">Products</a>
                         <div class="dropdown-menu">
-                            <a href="inigga-airmax-pro.html">iNigga Airmax Pro</a>
-                            <a href="inigga-airmax-lite.html">iNigga Airmax Lite</a>
-                            <a href="niggbook-air.html">niggbook Air</a>
-                            <a href="niggbook-pro.html">niggbook Pro</a>
+                            <a href="javascript:void(0)" onclick="showPage('airmax-pro')">iNigga Airmax Pro</a>
+                            <a href="javascript:void(0)" onclick="showPage('airmax-lite')">iNigga Airmax Lite</a>
+                            <a href="javascript:void(0)" onclick="showPage('niggbook-air')">niggbook Air</a>
+                            <a href="javascript:void(0)" onclick="showPage('niggbook-pro')">niggbook Pro</a>
                         </div>
                     </li>
                     <li><a href="#download">buy $inigga</a></li>
@@ -62,7 +62,7 @@
     </div>
 
     <!-- Main Content -->
-    <main id="main-content" class="main-content hidden">
+    <main id="main-content" class="main-content hidden page-section" data-page="home">
         <!-- Hero Section -->
         <section class="hero">
             <video class="hero-video" autoplay loop muted playsinline>
@@ -178,7 +178,7 @@
                     </video>
                 </div>
                 <div class="explore-cta">
-                    <a href="products.html" class="btn-primary large">View All Products</a>
+                    <a href="javascript:void(0)" onclick="showPage('products')" class="btn-primary large">View All Products</a>
                 </div>
             </div>
         </section>
@@ -199,7 +199,7 @@
                             <li>All-day battery life</li>
                             <li>Essential features</li>
                         </ul>
-                        <a href="inigga-airmax-lite.html" class="btn-primary buy-link">get $inigga</a>
+                        <a href="javascript:void(0)" onclick="showPage('airmax-lite')" class="btn-primary buy-link">get $inigga</a>
                     </div>
                     <div class="download-card featured">
                         <h3>iNigga Airmax Pro</h3>
@@ -211,7 +211,7 @@
                             <li>ProMotion display</li>
                             <li>5G connectivity fr</li>
                         </ul>
-                        <a href="inigga-airmax-pro.html" class="btn-primary buy-link">get $inigga</a>
+                        <a href="javascript:void(0)" onclick="showPage('airmax-pro')" class="btn-primary buy-link">get $inigga</a>
                     </div>
                     <div class="download-card">
                         <h3>niggbook Pro</h3>
@@ -223,12 +223,469 @@
                             <li>Up to 128GB memory</li>
                             <li>Pro performance ngl</li>
                         </ul>
-                        <a href="niggbook-pro.html" class="btn-primary buy-link">get $inigga</a>
+                        <a href="javascript:void(0)" onclick="showPage('niggbook-pro')" class="btn-primary buy-link">get $inigga</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Products Page Section -->
+    <section id="products-page" class="page-section hidden">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo/logo.png" alt="iNigga" class="logo">
+                    <span class="logo-text">iNigga</span>
+                </div>
+                <div class="nav-center">
+                    <ul class="nav-menu">
+                        <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle">Products</a>
+                            <div class="dropdown-menu">
+                                <a href="javascript:void(0)" onclick="showPage('airmax-pro')">iNigga Airmax Pro</a>
+                                <a href="javascript:void(0)" onclick="showPage('airmax-lite')">iNigga Airmax Lite</a>
+                                <a href="javascript:void(0)" onclick="showPage('niggbook-air')">niggbook Air</a>
+                                <a href="javascript:void(0)" onclick="showPage('niggbook-pro')">niggbook Pro</a>
+                            </div>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="scrollToSection('features')">Features</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToSection('download')">buy $inigga</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="products-overview">
+            <div class="container">
+                <h1>Products</h1>
+                <p class="overview-subtitle">Discover the complete iNigga ecosystem</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="product-categories">
+                    <!-- iNigga Phones Category -->
+                    <div class="category-section">
+                        <h2>iNigga Airmax</h2>
+                        <div class="products-row">
+                            <div class="product-item">
+                                <div class="product-visual">
+                                    <img src="devices/airmaxpro/airmaxpro.png" alt="iNigga Airmax Pro" class="product-image">
+                                </div>
+                                <h3>iNigga Airmax Pro</h3>
+                                <p>The most advanced device</p>
+                                <p class="price">From $1299</p>
+                                <div class="product-actions">
+                                    <a href="javascript:void(0)" onclick="showPage('airmax-pro')" class="btn-primary">Learn More</a>
+                                    <a href="https://pump.fun/board" class="btn-secondary" target="_blank">Pre-Order</a>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-visual">
+                                    <img src="devices/airmaxlite/airmaxlite.png" alt="iNigga Airmax Lite" class="product-image">
+                                </div>
+                                <h3>iNigga Airmax Lite</h3>
+                                <p>Essential features for everyday use</p>
+                                <p class="price">From $599</p>
+                                <div class="product-actions">
+                                    <a href="javascript:void(0)" onclick="showPage('airmax-lite')" class="btn-primary">Learn More</a>
+                                    <a href="https://pump.fun/board" class="btn-secondary" target="_blank">Pre-Order</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iNigga Books Category -->
+                    <div class="category-section">
+                        <h2>niggbook</h2>
+                        <div class="products-row">
+                            <div class="product-item">
+                                <div class="product-visual">
+                                    <img src="devices/niggbookair/niggbookair.png" alt="niggbook Air" class="product-image">
+                                </div>
+                                <h3>niggbook Air</h3>
+                                <p>Light as air. Powerful as needed.</p>
+                                <p class="price">From $999</p>
+                                <div class="product-actions">
+                                    <a href="javascript:void(0)" onclick="showPage('niggbook-air')" class="btn-primary">Learn More</a>
+                                    <a href="https://pump.fun/board" class="btn-secondary" target="_blank">Pre-Order</a>
+                                </div>
+                            </div>
+                            
+                            <div class="product-item">
+                                <div class="product-visual">
+                                    <img src="devices/niggbookpro/niggbookpro.png" alt="niggbook Pro" class="product-image">
+                                </div>
+                                <h3>niggbook Pro</h3>
+                                <p>Professional performance</p>
+                                <p class="price">From $1999</p>
+                                <div class="product-actions">
+                                    <a href="javascript:void(0)" onclick="showPage('niggbook-pro')" class="btn-primary">Learn More</a>
+                                    <a href="https://pump.fun/board" class="btn-secondary" target="_blank">Pre-Order</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- iNigga Airmax Pro Product Page -->
+    <section id="airmax-pro-page" class="page-section hidden">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo/logo.png" alt="iNigga" class="logo">
+                    <span class="logo-text">iNigga</span>
+                </div>
+                <div class="nav-center">
+                    <ul class="nav-menu">
+                        <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" onclick="showPage('products')" class="dropdown-toggle">Products</a>
+                            <div class="dropdown-menu">
+                                <a href="javascript:void(0)" onclick="showPage('airmax-pro')">iNigga Airmax Pro</a>
+                                <a href="javascript:void(0)" onclick="showPage('airmax-lite')">iNigga Airmax Lite</a>
+                                <a href="javascript:void(0)" onclick="showPage('niggbook-air')">niggbook Air</a>
+                                <a href="javascript:void(0)" onclick="showPage('niggbook-pro')">niggbook Pro</a>
+                            </div>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="scrollToSection('download')">buy $inigga</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Product Introduction -->
+        <section class="product-intro">
+            <div class="container">
+                <div class="intro-content">
+                    <h1 class="product-name">iNigga Airmax Pro</h1>
+                    <p class="product-headline">Pro level shi. Beyond wat u know fr.</p>
+                    <div class="product-visual-main">
+                        <img src="devices/airmaxpro/airmaxpro.png" alt="iNigga Airmax Pro" class="device-render-image">
+                    </div>
+                    <div class="product-pricing">
+                        <p class="price-from">From $1299</p>
+                        <p class="availability">Available for pre-order</p>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="https://pump.fun/board" class="btn-primary large" target="_blank">Pre-order</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Highlights -->
+        <section class="product-highlights">
+            <div class="container">
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <h3>A17 Pro chip</h3>
+                        <p>Game‑changing performanc no cap. Power efficiency dat go hard fr.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>Pro camera system</h3>
+                        <p>Crazy versatility type shi. Next‑level pro workflow ngl.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>ProMotion technology</h3>
+                        <p>Smooth 120Hz refresh rate for dat fluid scrolling experience fr.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>5G connectivity</h3>
+                        <p>Mad fast downloads and high‑quality streaming no cap.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Features -->
+        <section class="product-features">
+            <div class="container">
+                <div class="feature-section">
+                    <div class="feature-content">
+                        <h2>A17 Pro chip</h2>
+                        <h3>A monster win for gaming fr.</h3>
+                        <p>Dis the fastest chip in any device type shi. Wit da new 6‑core CPU packin 2 performance and 4 efficiency cores, A17 Pro delivers mad performance while keepin dat all‑day battery life no cap.</p>
+                    </div>
+                    <div class="feature-visual">
+                        <div class="chip-visual">🔲</div>
+                    </div>
+                </div>
+
+                <div class="feature-section reverse">
+                    <div class="feature-content">
+                        <h2>Pro camera system</h2>
+                        <h3>Close‑up shots dat hit different fr.</h3>
+                        <p>Da new Pro camera system be usin focus pixels on da Main camera — plus LiDAR and machine learning — to detect when da camera within macro focus distance ngl. Pics bout to be fire.</p>
+                    </div>
+                    <div class="feature-visual">
+                        <div class="camera-visual">📷</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Specs -->
+        <section class="section specs">
+            <div class="container">
+                <h2 class="section-title">Tech Specs</h2>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <h4>Display</h4>
+                        <p>6.7-inch Super Retina XDR display</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Chip</h4>
+                        <p>A16 Niggle chip wit 6-core CPU</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Camera</h4>
+                        <p>Pro camera sistem wit 48MP main</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Battery</h4>
+                        <p>Up to 29 hours video playback</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Storage</h4>
+                        <p>128GB, 256GB, 512GB, 1TB</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Colors</h4>
+                        <p>Space Black, Silver, Gold, Deep Purple</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="disclaimer">
+            <div class="container">
+                <p class="disclaimer-text">* we don do receepts</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- iNigga Airmax Lite Product Page -->
+    <section id="airmax-lite-page" class="page-section hidden">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo/logo.png" alt="iNigga" class="logo">
+                    <span class="logo-text">iNigga</span>
+                </div>
+                <div class="nav-center">
+                    <ul class="nav-menu">
+                        <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('products')">Products</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToSection('download')">buy $inigga</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="product-hero">
+            <div class="container">
+                <div class="product-hero-content">
+                    <div class="product-hero-image">
+                        <img src="devices/airmaxlite/airmaxlite.png" alt="iNigga Airmax Lite" style="width: 300px; height: 400px; object-fit: contain;">
+                    </div>
+                    <div class="product-hero-info">
+                        <h1>iNigga Airmax Lite</h1>
+                        <p class="product-tagline">Evryday device wit da essential features dat matter ngl.</p>
+                        <p class="product-hero-price">$599</p>
+                        <p class="pre-order-status">Pre-Order Only</p>
+                        <div class="product-cta">
+                            <a href="https://pump.fun/board" class="btn-primary" target="_blank">Pre-Order</a>
+                            <button class="btn-secondary">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Evrything you need no cap</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>A15 iNigga Chip</h3>
+                        <p>Fast processer for da evryday tasks type shi.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Dual Camera</h3>
+                        <p>Take pics dat go hard and videos no cap fr.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Long Battery Life</h3>
+                        <p>Battery dat keeps goin all day long ngl.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="disclaimer">
+            <div class="container">
+                <p class="disclaimer-text">* we don do receepts</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- niggbook Air Product Page -->
+    <section id="niggbook-air-page" class="page-section hidden">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo/logo.png" alt="iNigga" class="logo">
+                    <span class="logo-text">iNigga</span>
+                </div>
+                <div class="nav-center">
+                    <ul class="nav-menu">
+                        <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('products')">Products</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToSection('download')">buy $inigga</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="product-hero">
+            <div class="container">
+                <div class="product-hero-content">
+                    <div class="product-hero-image">
+                        <img src="devices/niggbookair/niggbookair.png" alt="niggbook Air" style="width: 350px; height: 250px; object-fit: contain;">
+                    </div>
+                    <div class="product-hero-info">
+                        <h1>niggbook Air</h1>
+                        <p class="product-tagline">Light as air but powerful type shi fr.</p>
+                        <p class="product-hero-price">$999</p>
+                        <p class="pre-order-status">Pre-Order Only</p>
+                        <div class="product-cta">
+                            <a href="https://pump.fun/board" class="btn-primary" target="_blank">Pre-Order</a>
+                            <button class="btn-secondary">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Portable and clean ngl</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>M2 iNigga Chip</h3>
+                        <p>Next gen performanc dat go different ngl.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>13.3" Retina Display</h3>
+                        <p>Beautiful display for work and play dat hit different no cap.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Ultra Thin</h3>
+                        <p>Only 2.8 pounds so u can carry dis anywhere type shi.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>All Day Battery</h3>
+                        <p>Up to 18 hours of usage fr no cap.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="disclaimer">
+            <div class="container">
+                <p class="disclaimer-text">* we don do receepts</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- niggbook Pro Product Page -->
+    <section id="niggbook-pro-page" class="page-section hidden">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo/logo.png" alt="iNigga" class="logo">
+                    <span class="logo-text">iNigga</span>
+                </div>
+                <div class="nav-center">
+                    <ul class="nav-menu">
+                        <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('products')">Products</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToSection('download')">buy $inigga</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="product-hero">
+            <div class="container">
+                <div class="product-hero-content">
+                    <div class="product-hero-image">
+                        <img src="devices/niggbookpro/niggbookpro.png" alt="niggbook Pro" style="width: 350px; height: 250px; object-fit: contain;">
+                    </div>
+                    <div class="product-hero-info">
+                        <h1>niggbook Pro</h1>
+                        <p class="product-tagline">Pro level performanc dat go crazy no cap.</p>
+                        <p class="product-hero-price">$1999</p>
+                        <p class="pre-order-status">Pre-Order Only</p>
+                        <div class="product-cta">
+                            <a href="https://pump.fun/board" class="btn-primary" target="_blank">Pre-Order</a>
+                            <button class="btn-secondary">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Pro level shi dat go hard ngl</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>M2 Pro iNigga Chip</h3>
+                        <p>Maximum performanc for dem pro tasks no cap fr.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>16" Liquid Retina XDR</h3>
+                        <p>Stunning display wit dat extreme dynamic range type shi.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Up to 128GB Memory</h3>
+                        <p>Mad crazy amounts of RAM for whatever u need ngl.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Pro Camera System</h3>
+                        <p>Advanced cameras for content creation dat go different.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Thunderbolt 4</h3>
+                        <p>Fast connectivity for all ya gear type shi.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Studio Quality Mics</h3>
+                        <p>Record studio quality audio anywhere u want no cap.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="disclaimer">
+            <div class="container">
+                <p class="disclaimer-text">* we don do receepts</p>
+            </div>
+        </section>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
